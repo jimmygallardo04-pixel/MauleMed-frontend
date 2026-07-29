@@ -14,7 +14,7 @@ import AppAlert from '@/components/common/AppAlert.vue'
 import ConfirmDialog from '@/components/common/ConfirmDialog.vue'
 import FormField from '@/components/common/FormField.vue'
 
-const { canManageSuppliers } = usePermissions()
+const { canCreateSuppliers, canEditSuppliers, canDeleteSuppliers } = usePermissions()
 
 const columns = [
   { key: 'name',          label: 'Nombre' },
@@ -225,7 +225,7 @@ function fmtDate(val) {
 <template>
   <section class="page">
     <PageHeader title="Proveedores" subtitle="Gestión de proveedores y sus precios">
-      <button v-if="canManageSuppliers" class="btn btn--primary" @click="openCreate">
+      <button v-if="canCreateSuppliers" class="btn btn--primary" @click="openCreate">
         <Plus :size="16" /> Nuevo proveedor
       </button>
     </PageHeader>
@@ -260,10 +260,10 @@ function fmtDate(val) {
           <button class="icon-btn" title="Productos y precios" @click="openProductsModal(row)">
             <DollarSign :size="15" />
           </button>
-          <button v-if="canManageSuppliers" class="icon-btn" title="Editar" @click="openEdit(row)">
+          <button v-if="canEditSuppliers" class="icon-btn" title="Editar" @click="openEdit(row)">
             <Pencil :size="15" />
           </button>
-          <button v-if="canManageSuppliers" class="icon-btn icon-btn--danger" title="Eliminar" @click="deleteTarget = row">
+          <button v-if="canDeleteSuppliers" class="icon-btn icon-btn--danger" title="Eliminar" @click="deleteTarget = row">
             <Trash2 :size="15" />
           </button>
         </div>
@@ -315,7 +315,7 @@ function fmtDate(val) {
     >
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
         <span style="font-size:0.85rem;color:var(--color-muted)">{{ spList.length }} producto(s) vinculado(s)</span>
-        <button v-if="canManageSuppliers" class="btn btn--primary btn--sm" @click="openCreateSP">
+        <button v-if="canCreateSuppliers" class="btn btn--primary btn--sm" @click="openCreateSP">
           <Plus :size="14" /> Vincular producto
         </button>
       </div>
@@ -348,10 +348,10 @@ function fmtDate(val) {
                 <button class="icon-btn" title="Historial de precios" @click="openPrices(sp)">
                   <History :size="14" />
                 </button>
-                <button v-if="canManageSuppliers" class="icon-btn" title="Editar" @click="openEditSP(sp)">
+                <button v-if="canEditSuppliers" class="icon-btn" title="Editar" @click="openEditSP(sp)">
                   <Pencil :size="14" />
                 </button>
-                <button v-if="canManageSuppliers" class="icon-btn icon-btn--danger" title="Desvincular" @click="deleteSP(sp)">
+                <button v-if="canDeleteSuppliers" class="icon-btn icon-btn--danger" title="Desvincular" @click="deleteSP(sp)">
                   <XCircle :size="14" />
                 </button>
               </div>
@@ -420,7 +420,7 @@ function fmtDate(val) {
     >
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
         <span style="font-size:0.85rem;color:var(--color-muted)">{{ priceList.length }} registro(s)</span>
-        <button v-if="canManageSuppliers" class="btn btn--primary btn--sm" @click="openCreatePrice">
+        <button v-if="canCreateSuppliers" class="btn btn--primary btn--sm" @click="openCreatePrice">
           <Plus :size="14" /> Registrar precio
         </button>
       </div>
@@ -440,10 +440,10 @@ function fmtDate(val) {
             <td>{{ p.source ?? '—' }}</td>
             <td>
               <div class="row-actions">
-                <button v-if="canManageSuppliers" class="icon-btn" title="Editar" @click="openEditPrice(p)">
+                <button v-if="canEditSuppliers" class="icon-btn" title="Editar" @click="openEditPrice(p)">
                   <Pencil :size="13" />
                 </button>
-                <button v-if="canManageSuppliers" class="icon-btn icon-btn--danger" title="Eliminar" @click="deletePrice(p)">
+                <button v-if="canDeleteSuppliers" class="icon-btn icon-btn--danger" title="Eliminar" @click="deletePrice(p)">
                   <XCircle :size="13" />
                 </button>
               </div>

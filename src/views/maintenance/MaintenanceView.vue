@@ -13,7 +13,7 @@ import FormField from '@/components/common/FormField.vue'
 import PageHeader from '@/components/common/PageHeader.vue'
 import '@/styles/maintenance.css'
 
-const { canManageCatalogs } = usePermissions()
+const { canManageCatalogs, canCreateProducts, canDeleteProducts } = usePermissions()
 
 const activeTab = ref('categories')
 
@@ -141,10 +141,10 @@ async function confirmDelete() {
 <template>
   <section class="page">
     <PageHeader title="Mantenedor" subtitle="Administración de parámetros maestros del sistema">
-      <button v-if="canManageCatalogs && activeTab === 'categories'" class="btn btn--primary" @click="openCreateCategory">
+      <button v-if="canCreateProducts && activeTab === 'categories'" class="btn btn--primary" @click="openCreateCategory">
         <Plus :size="16" /> Nueva categoría
       </button>
-      <button v-if="canManageCatalogs && activeTab === 'units'" class="btn btn--primary" @click="openCreateUnit">
+      <button v-if="canCreateProducts && activeTab === 'units'" class="btn btn--primary" @click="openCreateUnit">
         <Plus :size="16" /> Nueva unidad
       </button>
     </PageHeader>
@@ -194,7 +194,7 @@ async function confirmDelete() {
           <template #actions="{ row }">
             <div class="row-actions">
               <button v-if="canManageCatalogs" type="button" class="icon-btn" title="Editar" @click="openEditCategory(row)"><Pencil :size="15" /></button>
-              <button v-if="canManageCatalogs" type="button" class="icon-btn icon-btn--danger" title="Eliminar" @click="requestDelete('category', row)"><Trash2 :size="15" /></button>
+              <button v-if="canDeleteProducts" type="button" class="icon-btn icon-btn--danger" title="Eliminar" @click="requestDelete('category', row)"><Trash2 :size="15" /></button>
             </div>
           </template>
         </AppTable>
@@ -213,7 +213,7 @@ async function confirmDelete() {
           <template #actions="{ row }">
             <div class="row-actions">
               <button v-if="canManageCatalogs" type="button" class="icon-btn" title="Editar" @click="openEditUnit(row)"><Pencil :size="15" /></button>
-              <button v-if="canManageCatalogs" type="button" class="icon-btn icon-btn--danger" title="Eliminar" @click="requestDelete('unit', row)"><Trash2 :size="15" /></button>
+              <button v-if="canDeleteProducts" type="button" class="icon-btn icon-btn--danger" title="Eliminar" @click="requestDelete('unit', row)"><Trash2 :size="15" /></button>
             </div>
           </template>
         </AppTable>

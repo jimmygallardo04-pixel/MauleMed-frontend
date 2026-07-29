@@ -21,7 +21,7 @@ import '@/styles/products.css'
 
 const router = useRouter()
 
-const { canManageCatalogs } = usePermissions()
+const { canCreateProducts, canEditProducts, canDeleteProducts } = usePermissions()
 
 // ─── Tabla principal ───────────────────────────────────────────────────────────
 
@@ -574,7 +574,7 @@ function fmtQty(val) {
 <template>
   <section class="page">
     <PageHeader title="Productos" subtitle="Catálogo de productos del sistema">
-      <button v-if="canManageCatalogs" class="btn btn--primary" @click="openCreate">
+      <button v-if="canCreateProducts" class="btn btn--primary" @click="openCreate">
         <Plus :size="16" /> Nuevo producto
       </button>
     </PageHeader>
@@ -660,7 +660,7 @@ function fmtQty(val) {
           </button>
 
           <button
-            v-if="canManageCatalogs"
+            v-if="canEditProducts"
             type="button"
             class="icon-btn"
             title="Editar"
@@ -670,7 +670,7 @@ function fmtQty(val) {
           </button>
 
           <button
-            v-if="canManageCatalogs"
+            v-if="canDeleteProducts"
             type="button"
             class="icon-btn icon-btn--danger"
             title="Eliminar"
@@ -922,7 +922,7 @@ function fmtQty(val) {
     <AppModal v-if="showBPModal && bpProduct" :title="`Stock por sucursal — ${bpProduct.name}`" size="xl" @close="showBPModal = false">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
         <span style="font-size:0.85rem;color:var(--color-muted)">{{ bpList.length }} sucursal(es) configurada(s)</span>
-        <button v-if="canManageCatalogs" class="btn btn--primary btn--sm" @click="openCreateBP">
+        <button v-if="canEditProducts" class="btn btn--primary btn--sm" @click="openCreateBP">
           <Plus :size="14" /> Agregar sucursal
         </button>
       </div>
@@ -954,8 +954,8 @@ function fmtQty(val) {
             </td>
             <td>
               <div class="row-actions">
-                <button v-if="canManageCatalogs" class="icon-btn" title="Editar" @click="openEditBP(bp)"><Pencil :size="14" /></button>
-                <button v-if="canManageCatalogs" class="icon-btn icon-btn--danger" title="Eliminar" @click="deleteBP(bp)"><Trash2 :size="14" /></button>
+                <button v-if="canEditProducts" class="icon-btn" title="Editar" @click="openEditBP(bp)"><Pencil :size="14" /></button>
+                <button v-if="canDeleteProducts" class="icon-btn icon-btn--danger" title="Eliminar" @click="deleteBP(bp)"><Trash2 :size="14" /></button>
               </div>
             </td>
           </tr>

@@ -23,10 +23,16 @@ export function usePermissions() {
     // Catálogos
     canManageCatalogs:  computed(() => can('can_manage_catalogs')),
     canViewCatalogs:    computed(() => canAny('can_view_catalogs', 'can_manage_catalogs')),
+    canCreateProducts:  computed(() => canAny('can_create_products', 'can_manage_catalogs')),
+    canEditProducts:    computed(() => canAny('can_edit_products',   'can_manage_catalogs')),
+    canDeleteProducts:  computed(() => canAny('can_delete_products', 'can_manage_catalogs')),
 
     // Proveedores
-    canManageSuppliers: computed(() => can('can_manage_suppliers')),
-    canViewSuppliers:   computed(() => canAny('can_view_suppliers', 'can_manage_suppliers')),
+    canManageSuppliers:  computed(() => can('can_manage_suppliers')),
+    canViewSuppliers:    computed(() => canAny('can_view_suppliers', 'can_manage_suppliers')),
+    canCreateSuppliers:  computed(() => canAny('can_create_suppliers', 'can_manage_suppliers')),
+    canEditSuppliers:    computed(() => canAny('can_edit_suppliers',   'can_manage_suppliers')),
+    canDeleteSuppliers:  computed(() => canAny('can_delete_suppliers', 'can_manage_suppliers')),
 
     // Inventario
     canViewInventory:   computed(() => canAny('can_view_inventory', 'can_manage_inventory')),
