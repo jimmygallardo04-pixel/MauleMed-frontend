@@ -1,0 +1,13 @@
+/* src/style.css
+   Punto de entrada de estilos — importa cada módulo en orden.
+   El orden importa: tokens primero, reset segundo, luego UI. */
+
+@import './styles/tokens.css';
+@import './styles/reset.css';
+@import './styles/layout.css';
+@import './styles/navigation.css';
+@import './styles/auth.css';
+@import './styles/controls.css';
+@import './styles/buttons.css';
+@import './styles/badges.css';
+@import './styles/tabs.css';

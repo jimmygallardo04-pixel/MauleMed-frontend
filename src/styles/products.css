@@ -1,0 +1,242 @@
+.supplier-section {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+  display: grid;
+  gap: 12px;
+}
+
+.supplier-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.supplier-section-header strong {
+  font-size: 0.95rem;
+}
+
+.supplier-empty {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  padding: 8px 0;
+}
+
+.supplier-rows {
+  display: grid;
+  gap: 10px;
+}
+
+.supplier-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  background: #f8fafc;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  flex-wrap: wrap;
+}
+
+.sp-field {
+  display: grid;
+  gap: 5px;
+  flex: 1;
+  min-width: 120px;
+}
+
+.sp-field--wide   { flex: 2; min-width: 180px; }
+.sp-field--narrow { flex: 0 0 90px; min-width: 90px; }
+
+.sp-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Los inputs/selects dentro del supplier-row necesitan
+   color explícito (PrimeVue los pisa en contexto scoped) */
+.sp-field input,
+.sp-field select {
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  outline: none;
+  width: 100%;
+}
+
+.sp-field select option {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.sp-field input:focus,
+.sp-field select:focus {
+  border-color: var(--color-primary);
+}
+
+.sp-remove {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  background: #fee2e2;
+  color: var(--color-danger);
+  align-self: flex-end;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.sp-remove:hover { background: #fca5a5; }
+
+.required-mark {
+  color: var(--color-danger);
+  margin-left: 2px;
+}
+
+/* Imagen del producto en la tabla */
+
+.product-table-image {
+  width: 52px;
+  height: 52px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.product-table-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.product-table-image-empty {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: #94a3b8;
+}
+
+
+/* Imagen del producto en el modal */
+
+.product-image-field {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  background: #f8fafc;
+}
+
+.product-image-preview {
+  width: 130px;
+  height: 130px;
+  flex: 0 0 130px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-surface);
+}
+
+.product-image-preview img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.product-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 8px;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+
+.product-image-content {
+  display: grid;
+  gap: 10px;
+}
+
+.product-image-content strong {
+  font-size: 0.95rem;
+}
+
+.product-image-content p {
+  margin: 4px 0 0;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.product-image-input {
+  display: none;
+}
+
+.product-image-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.product-image-error {
+  color: var(--color-danger);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .supplier-row { flex-direction: column; }
+  .sp-field--narrow { flex: 1; }
+  .product-image-field {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .product-image-preview {
+    width: 100%;
+    height: 220px;
+    flex-basis: auto;
+  }
+}
+
+.form-grid select {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+.form-grid select option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* ── BranchProducts modal ── */
+.bp-table { width:100%; border-collapse:collapse; font-size:0.875rem; }
+.bp-table th, .bp-table td { padding:7px 10px; border-bottom:1px solid var(--color-border); text-align:left; }
+.bp-table th { background:var(--color-surface); font-weight:600; font-size:0.8rem; }
+.bp-critical { color:#ef4444; font-weight:700; }
+.bp-form-overlay {
+  position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:9999;
+  display:flex; align-items:center; justify-content:center; padding:16px;
+}
+.bp-form-card {
+  background:var(--color-surface); border-radius:var(--radius-md);
+  padding:24px; width:100%; max-width:560px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+}

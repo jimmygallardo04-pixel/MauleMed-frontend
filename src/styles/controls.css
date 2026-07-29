@@ -1,0 +1,176 @@
+/* styles/controls.css */
+
+/* ── Base de controles ── */
+.field-control,
+.filters-row select,
+.filters-row input,
+.form-grid input,
+.form-grid select,
+.form-grid textarea,
+.form-group input,
+.form-group select,
+.form-group textarea {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-family: inherit;
+  line-height: 1.5;
+  outline: none;
+  min-height: var(--touch-min, 44px);
+  background-color: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+/* Options */
+.filters-row select option,
+.form-grid select option,
+.form-group select option {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* Focus */
+.filters-row select:focus,
+.filters-row input:focus,
+.form-grid input:focus,
+.form-grid select:focus,
+.form-grid textarea:focus,
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  outline: none;
+}
+
+/* Error */
+.has-error input,
+.has-error select,
+.has-error textarea { border-color: var(--color-danger); }
+
+/* Textarea */
+.form-grid textarea,
+.form-group textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+/* ── Filters row ── */
+.filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.filters-row select,
+.filters-row input {
+  padding: 9px 12px;
+  min-width: 0;
+  width: auto;
+  flex: 1 1 140px;   /* se expande pero parte de 140px */
+  max-width: 260px;
+}
+
+/* Search box */
+.search-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  flex: 1 1 200px;
+  min-width: 0;
+  max-width: 360px;
+  min-height: var(--touch-min, 44px);
+}
+
+.search-input:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.search-input input {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none;
+  flex: 1;
+  padding: 0;
+  background: transparent !important;
+  min-width: 0;
+  min-height: unset;
+}
+
+/* ── Form grid ── */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.form-grid .full-width { grid-column: 1 / -1; }
+
+/* Login form */
+.form-group { display: grid; gap: 7px; }
+.form-group label { font-weight: 600; color: var(--color-text); }
+.form-group input { padding: 12px 14px; }
+.form-error { margin: 0; color: var(--color-danger); font-size: 0.875rem; }
+
+/* Checkboxes */
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  color: var(--color-text);
+  min-height: var(--touch-min, 44px);
+}
+
+/* Form actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 4px;
+  flex-wrap: wrap;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr; }
+
+  .filters-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filters-row select,
+  .filters-row input,
+  .search-input {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

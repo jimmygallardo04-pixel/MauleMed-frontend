@@ -1,0 +1,70 @@
+/* styles/reset.css — Base y normalize */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family:
+    Inter, ui-sans-serif, system-ui,
+    -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button { cursor: pointer; }
+
+img, svg { display: block; max-width: 100%; }
+
+p { margin: 0; }
+
+h1, h2, h3, h4, h5, h6 { margin: 0; }
+
+/* Forzar colores consistentes en todos los controles nativos */
+button,
+input,
+select,
+textarea,
+optgroup,
+option {
+  font: inherit;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+}
+
+select option {
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+/* Placeholder muted en todos los navegadores */
+::placeholder {
+  color: var(--color-muted);
+  opacity: 1;
+}
+
+/* Scrollbar global sutil */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+@media (max-width: 640px) {
+  html { font-size: 15px; }
+}
